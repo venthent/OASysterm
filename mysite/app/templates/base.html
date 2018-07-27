@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/base.css') }}">
+
+</head>
+<body>
+<div class="header col-md-12 container-fluid">
+    <div class="row">
+        <div class="logo col-md-1">
+            <img src="../static/img/logo2.png" height="120px">
+        </div>
+        <div class="company-name col-md-4">
+            <h2>WangJie Company</h2>
+            <p>OA information management system</p>
+        </div>
+        <div class="col-md-7">
+            <ul class="list-unstyled list-inline user-list">
+                <li>User:{{ current_user.name }}</li>
+                <li>Position:{{ current_user.position }}</li>
+                <li style="border-right: none"><a href="">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1 aside">
+            <div class="container-fluid">
+                <div class="row aside-button">
+                    <a href="">
+                        <div class="col-md-12 aside-button ">
+                            <span class="glyphicon glyphicon-pencil"></span>Approval Process
+                        </div>
+
+                    </a>
+
+                    <a href="">
+                        <div class="col-md-12 aside-button ">
+                            <span class="glyphicon glyphicon-plus-sign"></span>Start a  Process
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="col-md-12  ">
+                            <span class="glyphicon glyphicon-asterisk"></span>My Process
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="col-md-12 aside-button ">
+                            <span class="glyphicon glyphicon-folder-open"></span> Systerm Manage
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+            {% block content %}
+            {% endblock %}
+
+    </div>
+</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

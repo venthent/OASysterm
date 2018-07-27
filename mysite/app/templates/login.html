@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% import 'bootstrap/wtf.html' as wtf %}
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/log.css') }}">
+
+</head>
+<body>
+
+<div class="containers">
+    <div class="logo-container col-md-2">
+        <img src="../static/img/logo2.png" width="100px" class="logo-img">
+        <p class="logo-head">MyCompany</p>
+        <p class="logo-text">Office Automatic Platform</p>
+    </div>
+
+    <div class="myform col-md-3">
+        <p class="upon">
+            帐号密码登录
+        </p>
+        <form method="post">
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.name,class="form-control name-body") }}
+            {{ wtf.form_field(form.password,class="form-control passwd-body") }}
+            {{ wtf.form_field(form.remember_me) }}
+            {{ wtf.form_field(form.submit,class="btn btn-info btn-block") }}
+        </form>
+    </div>
+
+</div>
+{% for message in get_flashed_messages() %}
+<div class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ message }}
+</div>
+{% endfor %}
+<footer class="login-footer">
+    <small>Copyright © 2018 - 2018 Wangjie.All Rights Reserved</small>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
