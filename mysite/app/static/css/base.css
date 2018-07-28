@@ -66,57 +66,82 @@ body {
 .navbar {
     background-color: #7abbf8;
 }
-.navbar p{
+
+.navbar p {
     background-color: #EEE5DE;
     width: 120px;
     position: absolute;
     top: 8px;
     left: 90px;
     text-align: center;
-    padding:20px 1px 1px 10px;
+    padding: 20px 1px 1px 10px;
     border-radius: 6px 6px 0 0;
 }
+
 .content {
     height: 860px;
     float: right;
     background-color: #EEE5DE;
-      padding-left: 5px;
+    padding-left: 5px;
     padding-right: 5px;
     border: black 1px solid;
 }
 
 .table th {
     text-align: center;
-    border: #CDC8B1 1px solid;
+
 }
-#InitiatalTime{
+
+#InitiatalTime {
     width: 15%;
 }
-#ArrivedTime{
+
+#ArrivedTime {
     width: 15%;
 }
-#Initiator{
+
+#Initiator {
     width: 18%;
 }
-#ProcessID{
+
+#ProcessID {
     width: 15%;
 }
-#NO{
+
+#NO {
     width: 10%;
 }
-.process-table td{
+
+.process-table td {
     text-align: center;
 }
 
 /*Manage account*/
 .add-btn {
     float: right;
-    margin-right: 100px;
+    margin-right: 25px;
     margin-top: 13px;
 }
 
-.edit-btn{
-    float: right;
-    margin-right: 10px;
-    margin-top: 13px;
+.add-form {
+    width: 60%;
+    margin: auto;
 }
+
+.edit-btn {
+    float: right;
+    margin-right: 3px;
+}
+
+#edit {
+    width: 5%;
+}
+
+.table tr {
+    text-align: center;
+}
+/*.table {
+    margin-left: 15px;
+    width: auto;
+    margin-right: 15px;
+}*/

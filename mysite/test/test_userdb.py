@@ -22,5 +22,12 @@ class LoginTest(unittest.TestCase):
     def test_user(self):
         u=User.query.get(1)
         self.assertTrue(u is not None)
+    def test_change_some_property(self):
+        u=User.query.get(1)
+        u.name='changewangjie'
+        db.session.add(u)
+        db.session.commit()
+        self.assertTrue(u.name == 'changewangjie')
+
 if __name__=='__main__':
     unittest.main()

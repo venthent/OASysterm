@@ -13,7 +13,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     position = db.Column(db.String(20))  # 职位,分别为{'Staff','Manager','Boss'}
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
-    process=db.relationship('Process',backref='user', lazy='dynamic')
+    process = db.relationship('Process', backref='user', lazy='dynamic')
 
     def __init__(self, **kwargs):
         '''大多数用户在注册时赋予的角色都是默认角色“User”,“Administrator”由设置变量 ADMINISTRATOR 识别'''
@@ -66,13 +66,12 @@ class Process(db.Model):
     #  待审批人,分别为'None','Manager','Boss','None'表示走到尽头,不需要审批
     approver = db.Column(db.String(20), default=None)
     process_serial_num = db.Column(db.String(64))
-    user_id=db.Column(db.Integer,db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __init__(self, **kwargs):
         super(Process, self).__init__(**kwargs)
         if self.process_serial_num is None:
-            self.process_serial_num = 'WJ' + datetime.utcnow().strftime('%Y%m%d%H%M%S')# + str(self.user_id).zfill(5)
-
+            self.process_serial_num = 'WJ' + datetime.utcnow().strftime('%Y%m%d%H%M%S')  # + str(self.user_id).zfill(5)
 
 
 @login_manager.user_loader
