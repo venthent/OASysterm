@@ -63,7 +63,7 @@ class Process(db.Model):
     theme = db.Column(db.String(256))
     contents = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    #  审批人,分别为'None','Manager','Boss','None'表示没有审批
+    #  待审批人,分别为'None','Manager','Boss','None'表示走到尽头,不需要审批
     approver = db.Column(db.String(20), default=None)
     process_serial_num = db.Column(db.String(64))
     user_id=db.Column(db.Integer,db.ForeignKey('user.id'))
