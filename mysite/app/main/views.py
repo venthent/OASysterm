@@ -60,8 +60,10 @@ def edit_account(id):
             if form.old_password.data.strip() != '' and form.new_password.data.strip() != '' and form.confirm_password.data.strip() != '':
                 if user.verity_password(form.old_password.data) and form.new_password.data ==form.confirm_password.data:
                     user.password = form.new_password.data
+                    flash('Password has been changed!')
+                else:
+                    flash('Password has not been changed!')
             if current_user.role.permission == 'Administrator':
-                user.name = form.name.data
                 user.position = form.position.data
                 r = Role(permission=form.permission.data)
                 user.role = r

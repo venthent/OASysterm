@@ -10,7 +10,7 @@ login_manager=LoginManager()
 login_manager.login_view='login.login'
 
 def creat_app(config_name):
-    from .login import login as login_bp
+    from .login import auth as login_bp
     from .main import main as main_bp
 
     app=Flask(__name__)
