@@ -2,7 +2,7 @@ from flask import url_for, render_template, flash, redirect, request
 from flask_login import logout_user, login_user, login_required, current_user
 from ..models import User, Process, Role
 from mysite.app.main import main
-from .forms import AccountForm
+from .forms import AccountForm, ProcessForm
 from .. import db
 
 
@@ -58,7 +58,8 @@ def edit_account(id):
         if current_user == user:
             user.real_name = form.real_name.data
             if form.old_password.data.strip() != '' and form.new_password.data.strip() != '' and form.confirm_password.data.strip() != '':
-                if user.verity_password(form.old_password.data) and form.new_password.data ==form.confirm_password.data:
+                if user.verity_password(
+                        form.old_password.data) and form.new_password.data == form.confirm_password.data:
                     user.password = form.new_password.data
                     flash('Password has been changed!')
                 else:
@@ -87,3 +88,18 @@ def edit_account(id):
     form.permission.data = user.role.permission  # Admin can see only
 
     return render_template('edit_account.html', form=form, user=user)
+
+
+@main.route('/StartProcess', methods=['POST', 'GET'])
+@login_required
+def start_process():
+    form = ProcessForm()
+    if form.validate_on_submit():
+        theme = form.theme.data
+        level = form.level.data
+        contents = form.contents.data
+        p = Process(theme=theme, contents=contents, level=level, user=current_user._get_current_object(),approver='Boss')
+        db.session.add(p)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('startprocess.html', form=form)

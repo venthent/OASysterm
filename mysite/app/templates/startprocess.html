@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block content %}
+<div class="col-md-11 content">
+    <form method="post" class="startprocess">
+        {{ form.csrf_token }}
+        <div class="form-theme">
+            {{ wtf.form_field(form.theme,class="form-control theme") }}
+        </div>
+        <div class="form-level">
+            {{ wtf.form_field(form.level) }}
+        </div>
+        {{ wtf.form_field(form.contents,class="form-control textcontents",rows="15") }}
+        {{ wtf.form_field(form.submit,class="btn btn-info") }}
+    </form>
+</div>
+{% endblock %}
