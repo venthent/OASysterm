@@ -8,7 +8,6 @@
     <div class="add-form">
         <form method="post">
             {{ form.csrf_token }}
-
             {{ wtf.form_field(form.name,class="form-control") }}
             {{ wtf.form_field(form.real_name,class="form-control") }}
             {{ wtf.form_field(form.position) }}

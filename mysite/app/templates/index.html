@@ -5,10 +5,9 @@
         <p>Pending process</p>
     </div>
     <div>
-        {% if not process  %}
+        {% if not process %}
         <h2>There is no pending process</h2>
         {% else %}
-
         <table class="table table-striped table-hover">
             <thead>
             <tr>
@@ -18,19 +17,21 @@
                 <th scope="col" id="Initiator">Initiator</th>
                 <th scope="col" id="InitiatalTime">Initiatal Time</th>
                 <th scope="col" id="ArrivedTime">Arrived Time</th>
+                <th scope="col" id="approval-info-sign"></th>
             </tr>
             </thead>
             <tbody>
 
             {% for p in process %}
-
-            <tr class="process-table">
+            <tr>
                 <td>{{ loop.index }}</td>
-                <td><a href="">{{ p.process_serial_num }}{{ p.id }}</a></td>
+                <td>{{ p.process_serial_num }}{{ p.id }}</td>
                 <td>{{ p.theme }}</td>
                 <td>{{ p.user.real_name }}</td>
+                <td>{{ p.initial_time }}</td>
                 <td>{{ p.timestamp }}</td>
-                <td>{{ p.timestamp }}</td>
+                <td><a href="{{ url_for('main.detail',id=p.id) }}"><span
+                        class="glyphicon glyphicon-info-sign"></span> Detail</a></td>
             </tr>
             {% endfor %}
             </tbody>

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, StringField, PasswordField, SelectField,TextAreaField,ValidationError
+from wtforms import SubmitField, StringField, PasswordField, SelectField,TextAreaField,ValidationError,RadioField
 from wtforms.validators import DataRequired, Length
 from ..models import User
 
@@ -14,9 +14,14 @@ class AccountForm(FlaskForm):
     permission = SelectField(label="Permission:",
                              choices=[('Administrator', 'Administrator'), ('User', 'User')])
 
+    old_password = PasswordField("Old password:", render_kw={
+        'placeholder': 'If you write nothing,origional password will not be changed.'})
 
-#
-    submit = SubmitField("Commit")
+    new_password = PasswordField("New password:")
+    confirm_password = PasswordField("Confirm new password:",
+                                     render_kw={'placeholder': 'Please confirm your new password again'})
+
+    submit = SubmitField("Confirm")
 
     def validate_name(self,field):
         if User.query.filter_by(name=field.data).first():
@@ -32,4 +37,9 @@ class ProcessForm(FlaskForm):
     contents=TextAreaField("Contents:",validators=[DataRequired()])
     submit=SubmitField('Submit')
 
+
+class ApprovalFrom(FlaskForm):
+    comments=TextAreaField('Comments:',validators=[DataRequired()])
+    agreement=RadioField('Agree?',choices=[('agree','Agree'),('disagree','Disagree')])
+    submit=SubmitField('Confirm')
 

@@ -1,4 +1,4 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block content %}
 <div class="col-md-11 content">
@@ -9,23 +9,18 @@
         </div>
         <div class="form-group form-level">
             <label for="level">Level:</label>
+            {% if current_user.position.position_name=='Manager' %}
+            <select  name="level">
+                <option value="High">High</option>
+            </select>
+            {% else %}
             <select id="level" name="level">
                 <option value="Normal">Normal</option>
                 <option value="High">High</option>
             </select>
+            {% endif %}
         </div>
-        <div class="form-group">
-            <fieldset>
-                <legend>Send to:</legend>
-                {% for nextuser in next_users %}
-                <p>
-                    <input type="radio" name="nextname" value="{{ nextuser.name }}" id="{{ nextuser.id }}" required>
-                    <label for="{{ nextuser.id }}">{{ nextuser.name }}</label>
-                </p>
-                {% endfor %}
-            </fieldset>
-
-        </div>
+       {% include "_sendto.html" %}
         <div class="form-group textcontents">
             <label for="contents">Contents:</label>
             <textarea name="contents" class="form-control" id="contents" rows="15" required></textarea>

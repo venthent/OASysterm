@@ -1,28 +1,47 @@
+from datetime import datetime
 from flask import url_for, render_template, flash, redirect, request
 from flask_login import logout_user, login_user, login_required, current_user
-from ..models import User, Process, Role, Position
+from ..models import User, Process, Role, Position, ProcessComments
 from mysite.app.main import main
-from .forms import AccountForm, ProcessForm
+from .forms import AccountForm, ProcessForm, ApprovalFrom
 from .. import db
 
 postion_list = ['Staff', 'Manager', 'Boss', ]
 
 
-# @main.route('/index')
 @main.route('/index')
 @login_required
 def index():
-    # 既是首页，也是进行流程审批的页面
     # page=request.args.get('page',default=1,type=int)
-
-    # 用数字1,2,3表示职位
-    process = Process.query.filter_by(next_approver=current_user._get_current_object().name).order_by(
-        Process.timestamp.desc())
-    # p = current_user.position
-    # if p is not 'Boss':
-    #   pass
-    # next_approver=postion_dict.get(postion_dict[p]+1)
+    process = Process.query.filter_by(next_approver=current_user._get_current_object().name, status='agree').order_by(
+        Process.initial_time.desc())
     return render_template('index.html', process=process)
+
+
+# 详情页面，并进行流程审批
+@main.route('/index/detail/<int:id>', methods=['GET', 'POST'])
+@login_required
+def detail(id):
+    form = ApprovalFrom()
+    process = Process.query.get(id)
+    level = process.level
+    next_users = None
+    if current_user._get_current_object().position.position_name != 'Boss':
+        if level == 'High':
+            next_users = User.query.filter_by(position=Position.query.get(current_user.position.id + 1)).all()
+    if form.validate_on_submit():
+        if next_users:
+            process.next_approver = request.form.get("nextname")
+        else:
+            process.next_approver = None
+        process.status = form.agreement.data
+        process.timestamp = datetime.utcnow()
+        db.session.add(process)
+        pc = ProcessComments(comments=form.comments.data, process=process)
+        db.session.add(pc)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('detail.html', process=process, form=form, next_users=next_users)
 
 
 @main.route('/sys/account/')  # 管理帐号
@@ -118,4 +137,3 @@ def start_process():
             db.session.commit()
             return redirect(url_for("main.index"))
         return render_template('startprocess.html', next_users=next_users)
-

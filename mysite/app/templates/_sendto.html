@@ -1,0 +1,13 @@
+<div class="form-group">
+    <fieldset>
+        <legend>Send to:</legend>
+
+        {% for nextuser in next_users %}
+        <p>
+            <input type="radio" name="nextname" value="{{ nextuser.name }}" id="{{ nextuser.id }}" required>
+            <label for="{{ nextuser.id }}">{{ nextuser.name }}</label>
+        </p>
+        {% endfor %}
+    </fieldset>
+
+</div>
