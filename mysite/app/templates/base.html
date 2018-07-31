@@ -26,7 +26,7 @@
         <div class="col-md-7">
             <ul class="list-unstyled list-inline user-list">
                 <li>User:{{ current_user.name }}</li>
-                <li>Position:{{ current_user.position }}</li>
+                <li>Position:{{ current_user.position.position_name }}</li>
                 <li style="border-right: none"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
             </ul>
         </div>

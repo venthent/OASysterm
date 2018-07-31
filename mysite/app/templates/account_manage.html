@@ -29,7 +29,7 @@
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.real_name }}</td>
-            <td>{{ user.position }}</td>
+            <td>{{ user.position.position_name }}</td>
             <td>{{ user.role.permission }}</td>
             <td>
                 <a href="{{ url_for('main.edit_account',id=user.id) }}">
