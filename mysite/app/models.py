@@ -63,12 +63,12 @@ class Process(db.Model):
     theme = db.Column(db.String(256))
     contents = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    #  待审批人,分别为'None','Manager','Boss','None'表示走到尽头,审批完成
+    # 下一个审批人的职位,分别为'None','Manager','Boss','None'表示走到尽头,审批完成
     approver = db.Column(db.String(20), default=None)
     process_serial_num = db.Column(db.String(128))
 
-    # 代表流程等级，" Normal"和" High"等级对应流程最终审批的职位
-    level=db.Column(db.String(20),default="Normal")
+    # 最终审批ren de 职位
+    final_approver=db.Column(db.String(20),default="None")
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __init__(self, **kwargs):

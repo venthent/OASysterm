@@ -24,9 +24,12 @@ class AccountForm(FlaskForm):
     submit = SubmitField('Confirm')
 
 
+
 class ProcessForm(FlaskForm):
     '''For creating a new process'''
     theme=StringField("Theme:", validators=[DataRequired(), Length(0, 255)])
+
+    # 代表流程等级，" Normal"和" High"等级对应流程最终审批的职位
     level = SelectField("Level:", choices=[('Normal', 'Normal'), ('High', 'High')])
     contents=TextAreaField("Contents:",validators=[DataRequired()])
     submit=SubmitField('Submit')

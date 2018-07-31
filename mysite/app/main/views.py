@@ -5,15 +5,23 @@ from mysite.app.main import main
 from .forms import AccountForm, ProcessForm
 from .. import db
 
+postion_list = ['Staff', 'Manager', 'Boss', ]
+
 
 # @main.route('/index')
 @main.route('/index')
 @login_required
 def index():
+    # 既是首页，也是进行流程审批的页面
     # page=request.args.get('page',default=1,type=int)
 
+    # 用数字1,2,3表示职位
     process = Process.query.filter_by(approver=current_user._get_current_object().position).order_by(
         Process.timestamp.desc())
+    p = current_user.position
+    if p is not 'Boss':
+        pass
+        # next_approver=postion_dict.get(postion_dict[p]+1)
     return render_template('index.html', process=process)
 
 
@@ -23,10 +31,9 @@ def account_manage():
     per = current_user.role.permission
     if per == 'Administrator':
         users = User.query.order_by(User.id.asc()).all()
-        return render_template('account_manage.html', permission=per, users=users)
     else:
         users = User.query.filter_by(id=current_user.id).all()
-        return render_template('account_manage.html', permission=per, users=users)
+    return render_template('account_manage.html', permission=per, users=users)
 
 
 @main.route('/sys/add', methods=['POST', 'GET'])
@@ -34,7 +41,7 @@ def account_manage():
 def add_account():
     form = AccountForm()
     u = User.query.filter_by(name=form.name.data).first()
-    if form.validate_on_submit():
+    if request.method == 'POST':
         if u is None:
             new_user = User(name=form.name.data, real_name=form.real_name.data, password='1111',
                             position=form.position.data)
@@ -54,7 +61,7 @@ def add_account():
 def edit_account(id):
     user = User.query.get_or_404(id)
     form = AccountForm()
-    if form.validate_on_submit():
+    if request.method == 'POST':
         if current_user == user:
             user.real_name = form.real_name.data
             if form.old_password.data.strip() != '' and form.new_password.data.strip() != '' and form.confirm_password.data.strip() != '':
@@ -93,13 +100,11 @@ def edit_account(id):
 @main.route('/StartProcess', methods=['POST', 'GET'])
 @login_required
 def start_process():
-    form = ProcessForm()
-    if form.validate_on_submit():
-        theme = form.theme.data
-        level = form.level.data
-        contents = form.contents.data
-        p = Process(theme=theme, contents=contents, level=level, user=current_user._get_current_object(),approver='Boss')
-        db.session.add(p)
-        db.session.commit()
-        return redirect(url_for('main.index'))
-    return render_template('startprocess.html', form=form)
+    next_users = None
+    if current_user.position is not 'Boss':
+        next_users = User.query.filter_by(position=(postion_list[postion_list.index(current_user.position) + 1])).all()
+
+    if request.method == 'POST':
+        pass
+
+    return render_template('startprocess.html', next_users=next_users)
