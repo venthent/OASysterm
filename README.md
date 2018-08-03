@@ -13,9 +13,5 @@
 6、流程审批，流程审批人在主页看到待审批的流程概要，并进行审批；可填入审批意见，选择同意与否，并发送至下一职级的审批人；  
 7、流程查看，用户可查看自己发起的流程概况，包括流程状态（分为已通过、正在审批、未通过三种状态）、已审批人意见、下一位审批人等信息。   
 
-## 二、
-```python
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-```
+## 二、流程关系图  
+![Alt text](C:\Users\Administrator\Downloads\OA条件结构流程图.jpg)
