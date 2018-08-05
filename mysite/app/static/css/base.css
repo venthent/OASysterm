@@ -9,29 +9,43 @@
 
 .aside {
     border-right: #CDC8B1 solid 2px;
-    height: 860px;
+    height:auto;
     padding: 0 1px;
 }
 
 .content {
-    height: 860px;
+    height: 100%;
     float: right;
+    background-color: #EEE5DE;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow: scroll;
+}
+
+.username{
+    color: #ff5050;
+    padding-left: 4px;
+    font-size: 1.2em;
+}
+.position-name{
+    color:#5050ff ;
+    padding-left: 4px;
 }
 
 .logo {
-
     float: left;
     height: 120px;
-
 }
 
 .company-name p {
     letter-spacing: 1.5px;
-    padding-top: 15px;
+    padding-top: 1em;
+    margin-left: 1.5em;
 }
 
 .company-name h2 {
-    margin-top: 25px;
+    margin-top: 1em;
+    margin-left: 0.9em;
 }
 
 .user-list {
@@ -52,7 +66,7 @@
     text-align: left;
     color: white;
     font-size: 1em;
-    padding: 12px 0px 12px 2px;
+    padding:0.85em 0 0.85em 0.14em;
     margin-top: 0.6em;
     background-color: #7abbf8;
     border-radius: 2px;
@@ -62,159 +76,6 @@
 body {
     background-color: #FFFAFA;
 }
-
-/*main.index*/
 .navbar {
     background-color: #7abbf8;
-}
-
-.navbar p {
-    background-color: #EEE5DE;
-    width: 120px;
-    position: absolute;
-    top: 8px;
-    left: 90px;
-    text-align: center;
-    padding: 20px 1px 1px 10px;
-    border-radius: 6px 6px 0 0;
-}
-
-.content {
-    height: 860px;
-    float: right;
-    background-color: #EEE5DE;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: black 1px solid;
-}
-
-.table th {
-    text-align: center;
-
-}
-.process-table{
-   border-radius: 20px;
-    background-color: #FF7F24;
-}
-
-#InitiatalTime {
-    width: 15%;
-}
-
-#ArrivedTime {
-    width: 15%;
-}
-
-#Initiator {
-    width: 18%;
-}
-
-#ProcessID {
-    width: 15%;
-}
-
-#NO {
-    width: 10%;
-}
-#approval-info-sign{
-    width: 8%;
-}
-
-.process-table td {
-    text-align: center;
-}
-
-
-/*Manage account*/
-.add-btn {
-    float: right;
-    margin-right: 25px;
-    margin-top: 13px;
-}
-
-.add-form {
-    width: 60%;
-    margin: auto;
-}
-
-.edit-btn {
-    float: right;
-    margin-right: 3px;
-}
-
-#edit {
-    width: 5%;
-}
-
-.table tr {
-    text-align: center;
-}
-
-
-
-
-/*startprocess*/
-.startprocess {
-    width: 65%;
-    margin:auto;
-    padding-top: 80px;
-}
-.startprocess p{
-    margin-bottom: 0px;
-}
-.theme {
-    border: #FF7F24 1px solid;
-}
-
-.textcontents{
-     border: #51a2ee 1px solid;
-}
-.form-theme{
-    display: inline-block;
-    margin-bottom: 20px;
-    width: 80%;
-
-}
-.form-level{
-    display: inline-block;
-    width: 10%;
-    float: right;
-}
-
-/*css for detail.html */
-.caption{
-    text-align: center;
-    color: #FF7F24;
-    font-size: 1.5em;
-}
-.table{
-    width: 70%;
-    margin: auto;
-}
-#blank {
-    width: 30px;
-}
-
-.body-contents p {
-    text-align: left;
-    margin-left: 6%;
-}
-.approval-conments{
-    width: 70%;
-    margin: auto;
-}
-.table {
-    margin-bottom: 60px;
-}
-.table p{
-    height: 100px;
-    border: #FA8072 1px solid;
-    border-radius: 7px;
-    padding-left: 1em;
-    padding-top: 0.5em;
-    box-shadow: 0 0 1px 1px #FA8072 inset ;
-}
-
-.detail-body{
-    background-color: white;
 }

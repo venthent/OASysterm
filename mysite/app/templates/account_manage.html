@@ -1,48 +1,62 @@
 {% extends "base.html"%}
+{% import "_macro.html" as macro %}
+{% block head %}
+{{ super() }}
+<title>Manage account</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/account_manage.css') }}">
+{% endblock %}
 {% block content %}
-<div class="col-md-11 content account-manage">
-    <div class="navbar manage-account">
-        <p>Manage account</p>
-        {% if permission=='Administrator' %}
-        <a href="{{ url_for('main.add_account') }}">
-            <button class="btn btn-default add-btn">
-                <span class="glyphicon glyphicon-plus"></span> Add
-            </button>
-        </a>
-        {% endif %}
-    </div>
-    <table class="table table-striped table-hover">
-        <thead>
-        <tr>
-            <th>User ID</th>
-            <th>User Name(Account)</th>
-            <th>Real Name</th>
-            <th>Job Position</th>
-            <th>Permission</th>
-            <th id="edit"></th>
-        </tr>
-        </thead>
 
-        {% for user in users %}
-        <tbody>
-        <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.real_name }}</td>
-            <td>{{ user.position.position_name }}</td>
-            <td>{{ user.role.permission }}</td>
-            <td>
-                <a href="{{ url_for('main.edit_account',id=user.id) }}">
-                    <button class="btn btn-warning edit-btn">
-                        <span class="glyphicon glyphicon-edit"></span> Edit
-                    </button>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-        {% endfor %}
-
-    </table>
-
+<div class="navbar manage-account">
+    <p>Manage account</p>
+    {% if permission=='Administrator' %}
+    <a href="{{ url_for('main.add_account') }}">
+        <button class="btn btn-default add-btn">
+            <span class="glyphicon glyphicon-plus"></span> Add
+        </button>
+    </a>
+    {% endif %}
 </div>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>User Name(Account)</th>
+        <th>Real Name</th>
+        <th>Job Position</th>
+        <th>Permission</th>
+        <th id="edit"></th>
+    </tr>
+    </thead>
+
+    {% for user in users %}
+    <tbody>
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.real_name }}</td>
+        <td>{{ user.position.position_name }}</td>
+        <td>{{ user.role.permission }}</td>
+        <td>
+            <a href="{{ url_for('main.edit_account',id=user.id) }}">
+                <button class="btn btn-warning edit-btn">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+            </a>
+            {% if current_user.role.permission=='Administrator' %}
+            <a href="{{ url_for('main.delete_account',id=user.id) }}">
+                <button class="btn btn-danger delete-btn">
+                    <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
+            </a>
+            {% endif %}
+        </td>
+    </tr>
+    </tbody>
+    {% endfor %}
+
+</table>
+{% if pagination %}
+{{ macro.pagination_widget(pagination,'main.account_manage') }}
+{% endif %}
 {% endblock %}

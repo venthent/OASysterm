@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Index</title>
+    {% block head %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/base.css') }}">
-
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
+    {% endblock %}
 </head>
 <body>
 {% for message in get_flashed_messages() %}
@@ -17,7 +19,7 @@
 <div class="header col-md-12 container-fluid">
     <div class="row">
         <div class="logo col-md-1">
-            <img src="../static/img/logo1.png" width="120px">
+            <img src="../static/img/logo1.png " height="100%">
         </div>
         <div class="company-name col-md-4">
             <h2>WangJie Company</h2>
@@ -25,8 +27,8 @@
         </div>
         <div class="col-md-7">
             <ul class="list-unstyled list-inline user-list">
-                <li>User:{{ current_user.name }}</li>
-                <li>Position:{{ current_user.position.position_name }}</li>
+                <li>User:<span class="username">{{ current_user.name }}</span></li>
+                <li>Position:<span class="position-name">{{ current_user.position.position_name }}</span></li>
                 <li style="border-right: none"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
             </ul>
         </div>
@@ -46,10 +48,10 @@
 
                     <a href="{{ url_for('main.start_process')}}">
                         <div class="col-md-12 aside-button ">
-                            <span class="glyphicon glyphicon-plus-sign"></span>Start a  Process
+                            <span class="glyphicon glyphicon-plus-sign"></span>Start a Process
                         </div>
                     </a>
-                    <a href="">
+                    <a href="{{ url_for('main.myprocess')}}">
                         <div class="col-md-12  ">
                             <span class="glyphicon glyphicon-asterisk"></span>My Process
                         </div>
@@ -62,14 +64,17 @@
                 </div>
             </div>
         </div>
+<div class="col-md-11 content">
+        {% block content %}
 
-            {% block content %}
-            {% endblock %}
 
+        {% endblock %}
+</div>
     </div>
 </div>
 
 <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>

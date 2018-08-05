@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import "_macro.html" as macro %}
+{% block head %}
+{{ super() }}
+    <title>MyProcess</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/my_process.css') }}">
+{% endblock %}
+{% block content %}
+
+    <div class="navbar">
+        <p>My process</p>
+    </div>
+    {% if not myprocess %}
+    <h2>You don't have any process</h2>
+    {% else %}
+    <table class="table myprocess  table-hover">
+        <thead>
+        <tr>
+            <th scope="col" id="NO">NO.</th>
+            <th scope="col" id="ProcessID">Serial Num</th>
+            <th scope="col">Theme</th>
+            <th>Level</th>
+            <th scope="col" id="InitiatalTime">Initiatal Time</th>
+            <th scope="col" id="ArrivedTime">Approval Time</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in myprocess %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ p.process_serial_num }}{{ p.id }}</td>
+            <td>{{ p.theme }}</td>
+            <td>{{ p.level  }}</td>
+            <td>{{ moment(p.initial_time).format("YYYY MMM Do,HH:mm:ss") }}</td>
+            <td>{{ moment(p.timestamp).format("YYYY MMM Do,HH:mm:ss") }}</td>
+            {% if p.next_approver==None and p.status=='agree' %}
+            <td><a href="{{ url_for('main.myprocess_detail',id=p.id) }}"><button class="btn btn-success myprocess-btn">Passed</button></a></td>
+            {% elif p.next_approver==None and p.status=='disagree' %}
+            <td><a href="{{ url_for('main.myprocess_detail',id=p.id) }}"><button class="btn btn-danger myprocess-btn">Didn't pass</button></a></td>
+            {% else %}
+            <td><a href="{{ url_for('main.myprocess_detail',id=p.id) }}"><button class="btn btn-warning myprocess-btn">Inspecting</button></a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% if myprocess %}
+{{ macro.pagination_widget(pagination,'main.myprocess') }}
+{% endif %}
+{% endblock %}

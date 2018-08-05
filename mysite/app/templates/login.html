@@ -17,18 +17,18 @@
 <div class="containers">
     <div class="logo-container col-md-2">
         <img src="../static/img/logo1.png" width="100px" class="logo-img">
-        <p class="logo-head">MyCompany</p>
+        <p class="logo-head"><span>MyCompany</span></p>
         <p class="logo-text">Office Automatic Platform</p>
     </div>
 
     <div class="myform col-md-3">
         <p class="upon">
-            帐号密码登录
+            Account&password login
         </p>
         <form method="post">
             {{ form.csrf_token }}
-            {{ wtf.form_field(form.name,class="form-control") }}
-            {{ wtf.form_field(form.password,class="form-control") }}
+            {{ wtf.form_field(form.name,class="form-control name-body") }}
+            {{ wtf.form_field(form.password,class="form-control passwd-body") }}
             {{ wtf.form_field(form.remember_me) }}
             {{ wtf.form_field(form.submit,class="btn btn-info btn-block") }}
         </form>

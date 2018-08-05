@@ -1,7 +1,11 @@
 {% extends "base.html"%}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block content %}
-<div class="col-md-11 content">
+{% block head %}
+{{ super() }}
+    <title>Edit account</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/edit_account.css') }}">
+{% endblock %}
     <div class="navbar">
         <p>Edit Account</p>
     </div>
@@ -15,5 +19,5 @@
         {% endif %}
     </div>
 
-</div>
+
 {% endblock %}

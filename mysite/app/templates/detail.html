@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
+{% block head %}
+{{ super() }}
+    <title>Detail</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/detail.css') }}">
+{% endblock %}
 {% block content %}
-<div class="col-md-11 content">
     <div class="navbar">
         <p>Process detail</p>
     </div>
@@ -20,7 +24,7 @@
             <td> </td>
             <td>{{ process.user.name }}</td>
             <td>{{ process.level }}</td>
-            <td>{{ process.timestamp }}</td>
+            <td>{{ moment(process.initial_time).format("YYYY MMM Do,HH:mm:ss") }}</td>
         </tr>
         <tr >
             <th rowspan="3" scope="row" class="head-contents">Contents</th>
@@ -37,7 +41,5 @@
         {% endif %}
         {{ wtf.form_field(form.submit,class="btn btn-primary") }}
     </form>
-</div>
-
 {% endblock %}
 

@@ -6,7 +6,7 @@ from mysite.app import creat_app, db
 
 
 class LoginTest(unittest.TestCase):
-    """Test login view"""
+    """Test auth view"""
 
     def setUp(self):
         self.app = creat_app('test')

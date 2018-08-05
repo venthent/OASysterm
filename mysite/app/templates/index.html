@@ -1,6 +1,11 @@
 {% extends "base.html"%}
+{% import "_macro.html" as macro %}
+{% block head %}
+{{ super() }}
+    <title>Index</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+{% endblock %}
 {% block content %}
-<div class="col-md-11 content">
     <div class="navbar">
         <p>Pending process</p>
     </div>
@@ -28,8 +33,8 @@
                 <td>{{ p.process_serial_num }}{{ p.id }}</td>
                 <td>{{ p.theme }}</td>
                 <td>{{ p.user.real_name }}</td>
-                <td>{{ p.initial_time }}</td>
-                <td>{{ p.timestamp }}</td>
+                <td>{{ moment(p.initial_time).format("YYYY MMM Do,HH:mm:ss") }}</td>
+                <td>{{ moment(p.timestamp).format("YYYY MMM Do,HH:mm:ss" )}}</td>
                 <td><a href="{{ url_for('main.detail',id=p.id) }}"><span
                         class="glyphicon glyphicon-info-sign"></span> Detail</a></td>
             </tr>
@@ -38,24 +43,7 @@
         </table>
         {% endif %}
     </div>
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
+{% if process %}
+{{ macro.pagination_widget(pagination,'main.index') }}
+{% endif %}
 {% endblock %}

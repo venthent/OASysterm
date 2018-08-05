@@ -1,7 +1,11 @@
 {% extends "base.html"%}
 {% import 'bootstrap/wtf.html' as wtf %}
+{% block head %}
+{{ super() }}
+    <title>Add account</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/add_account.css') }}">
+{% endblock %}
 {% block content %}
-<div class="col-md-11 content">
     <div class="navbar">
         <p>Add Account</p>
     </div>
@@ -12,10 +16,6 @@
             {{ wtf.form_field(form.real_name,class="form-control") }}
             {{ wtf.form_field(form.position) }}
             {{ wtf.form_field(form.submit,class="btn btn-info btn-block") }}
-
-
         </form>
     </div>
-
-</div>
 {% endblock %}

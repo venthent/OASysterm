@@ -39,6 +39,13 @@ class User(UserMixin, db.Model):
         和password_hash进行比对。如果返回True ,就表明密码是正确的'''
         return check_password_hash(self.password_hash, password)
 
+    @staticmethod
+    def insert_administrator():
+        p=Position.query.get(3)
+        u=User(name='wangjie',real_name='WangJie',password='1111',position=p)
+        db.session.add(u)
+        db.session.commit()
+
 
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -80,15 +87,15 @@ class Process(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     theme = db.Column(db.String(256))
     contents = db.Column(db.Text)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    initial_time=db.Column(db.DateTime,default=datetime.utcnow)
+    initial_time = db.Column(db.DateTime, default=datetime.utcnow)
+    timestamp=db.Column(db.DateTime, default=datetime.utcnow)
     # 下一个审批人的名字,'None'表示走到尽头,审批完成
     next_approver = db.Column(db.String(20), default=None)
     process_serial_num = db.Column(db.String(128))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     # level:High,Normal
     level = db.Column(db.String(20))
-    status = db.Column(db.String(12),default='agree')
+    status = db.Column(db.String(12), default='agree')
     process_coments = db.relationship('ProcessComments', backref='process', lazy='dynamic')
 
     def __init__(self, **kwargs):
@@ -100,7 +107,11 @@ class Process(db.Model):
 class ProcessComments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comments = db.Column(db.Text)
+    comments_status=db.Column(db.String(20))
+    comments_time = db.Column(db.DateTime, default=datetime.utcnow)
+    comments_author = db.Column(db.String(20))
     process_id = db.Column(db.Integer, db.ForeignKey('process.id'))
+
 
 
 @login_manager.user_loader
