@@ -1,6 +1,6 @@
 # OASysterm
 # 简介：  
-一个简单的公司OA平台系统，利用Flask框架搭建，实现流程发起、审批、查阅及用户管理等功能。  
+一个简单的公司OA平台系统，利用Flask+Bootstrap框架搭建，实现流程发起、审批、查阅及用户管理等功能。  
 
 
 ## 一、基本功能：  
@@ -15,3 +15,5 @@
 
 ## 二、流程关系图  
 ![Alt text](C:\Users\Administrator\Downloads\OA条件结构流程图.jpg)
+
+##三、实际运行效果
