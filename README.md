@@ -14,6 +14,6 @@
 7、流程查看，用户可查看自己发起的流程概况，包括流程状态（分为已通过、正在审批、未通过三种状态）、已审批人意见、下一位审批人等信息。   
 
 ## 二、流程关系图  
-![image](OASysterm/imgs/OA流程图.jpg)
+![image](https://github.com/venthent/OASysterm/imgs/OA流程图.jpg)
 
 ## 三、实际运行效果
