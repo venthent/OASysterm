@@ -19,8 +19,11 @@
 ## 三、实际运行效果
 假设人员组织如图所示，发起流程的方向是从普通职员（Staff）到老板（Boss）：  
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/人员组织图.jpg)
+
 1、登录页面：
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/login-page.jpg)  
+
+
 2、进入系统的主页面，也是待审批流程的概览页面：  
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/index-page.jpg)  
 3、发起流程，创建流程内容；'Send to'表示要发送给谁审批：  
