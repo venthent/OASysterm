@@ -1,6 +1,6 @@
 # OASysterm
 # 简介：  
-一个简单的公司OA平台系统，利用Flask+Bootstrap框架搭建，实现流程发起、审批、查阅及用户管理等功能。  
+一个简单的公司OA平台系统，利用Flask+Bootstrap框架搭建，实现流程发起、审批、查阅及用户管理等功能。 已部署至heroku，详情可见地址:https://my-oasysterm-app-cn.herokuapp.com/
 
 
 ## 一、基本功能：  
