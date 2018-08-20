@@ -26,34 +26,47 @@
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/login-page.jpg)    
 <br />
 <br />
-<br />
+
     
 2、进入系统的主页面，也是待审批流程的概览页面：  
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/index-page.jpg)  
+<br />
+<br />
 
 
+3、发起流程，创建流程内容；'Send to'表示要发送给谁审批：   
 
-3、发起流程，创建流程内容；'Send to'表示要发送给谁审批：  
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/start-process.jpg)  
 
 
-4、查看自己已经发起的流程情况，有三种状态：已通过（Passed）、未通过（Din't Pass）和正在审批中（Inspecting）
+4、查看自己已经发起的流程情况，有三种状态：已通过（Passed）、未通过（Din't Pass）和正在审批中（Inspecting）  
+
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/process-list.jpg)  
+<br />
+<br />
 
 
+5、查看已经发起流程的详情，可以查看流程内容，审批人的意见以及下一位审批人  
 
-5、查看已经发起流程的详情，可以查看流程内容，审批人的意见以及下一位审批人   
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/detail-of-myprocess.jpg
+<br />
+<br />
 
+6、系统管理，管理员可以看到所有用户信息并进行相应的修改、删除、增加，普通用户只能看到自己的信息并修改  
 
-6、系统管理，管理员可以看到所有用户信息并进行相应的修改、删除、增加，普通用户只能看到自己的信息并修改
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/account-manage-page.jpg)    
-
-
-
+<br />
+<br />
 7、账户信息修改页面，有三种情况：
 >
 >>(1).管理员用户修改自己的账号，修改页面如下：  
+
 >>![image](https://github.com/venthent/OASysterm/raw/master/imgs/edit-account-page.jpg)  
 
+<br />
+>>(2).管理员修改其他人的账号，不能修改密码：
+>>![image](https://github.com/venthent/OASysterm/raw/master/imgs/edit-account-page.jpg)  
+<br />
+>>(3).普通用户修改自己的账号：
+>>![image](https://github.com/venthent/OASysterm/raw/master/imgs/edit-account-page3.jpg)
 
