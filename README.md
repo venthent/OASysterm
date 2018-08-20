@@ -65,7 +65,7 @@
 
 <br />
 >>(2).管理员修改其他人的账号，不能修改密码：
->>![image](https://github.com/venthent/OASysterm/raw/master/imgs/edit-account-page.jpg)  
+>>![image](https://github.com/venthent/OASysterm/raw/master/imgs/edit-account-page2.jpg)  
 <br />
 >>(3).普通用户修改自己的账号：
 >>![image](https://github.com/venthent/OASysterm/raw/master/imgs/edit-account-page3.jpg)
