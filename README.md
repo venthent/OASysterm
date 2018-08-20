@@ -21,15 +21,12 @@
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/人员组织图.jpg)
 
 
-1、登录页面：
-![image](https://github.com/venthent/OASysterm/raw/master/imgs/login-page.jpg)  
+1、登录页面：  
 
-
-
-
-
-
-
+![image](https://github.com/venthent/OASysterm/raw/master/imgs/login-page.jpg)    
+  
+    
+    
 2、进入系统的主页面，也是待审批流程的概览页面：  
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/index-page.jpg)  
 
