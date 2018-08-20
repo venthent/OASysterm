@@ -1,6 +1,6 @@
 # OASysterm
 # 简介：  
-一个简单的公司OA平台系统，利用Flask+Bootstrap框架搭建，实现流程发起、审批、查阅及用户管理等功能。 已部署至heroku，详情可见地址:https://my-oasysterm-app-cn.herokuapp.com/
+一个简单的公司OA平台系统，利用Flask+Bootstrap框架搭建，实现流程发起、审批、查阅及用户管理等功能。 已部署至heroku，可访问地址:https://my-oasysterm-app-cn.herokuapp.com/。
 
 
 ## 一、基本功能：  
@@ -20,11 +20,37 @@
 假设人员组织如图所示，发起流程的方向是从普通职员（Staff）到老板（Boss）：  
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/人员组织图.jpg)
 
+
 1、登录页面：
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/login-page.jpg)  
 
 
 2、进入系统的主页面，也是待审批流程的概览页面：  
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/index-page.jpg)  
+
+
+
 3、发起流程，创建流程内容；'Send to'表示要发送给谁审批：  
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/start-process.jpg)  
+
+
+4、查看自己已经发起的流程情况，有三种状态：已通过（Passed）、未通过（Din't Pass）和正在审批中（Inspecting）
+![image](https://github.com/venthent/OASysterm/raw/master/imgs/process-list.jpg)  
+
+
+
+5、查看已经发起流程的详情，可以查看流程内容，审批人的意见以及下一位审批人   
+![image](https://github.com/venthent/OASysterm/raw/master/imgs/detail-of-myprocess.jpg
+
+
+6、系统管理，管理员可以看到所有用户信息并进行相应的修改、删除、增加，普通用户只能看到自己的信息并修改
+![image](https://github.com/venthent/OASysterm/raw/master/imgs/account-manage-page.jpg)    
+
+
+
+7、账户信息修改页面，有三种情况：
+>
+>>(1).管理员用户修改自己的账号，修改页面如下：  
+>>![image](https://github.com/venthent/OASysterm/raw/master/imgs/edit-account-page.jpg)  
+
+
