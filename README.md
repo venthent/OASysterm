@@ -46,9 +46,10 @@
 <br />
 
 
-5、查看已经发起流程的详情，可以查看流程内容，审批人的意见以及下一位审批人  
+5、查看已经发起流程的详情，可以查看流程内容，审批人的意见以及下一位审批人    
 
-![image](https://github.com/venthent/OASysterm/raw/master/imgs/detail-of-myprocess.jpg
+![image](https://github.com/venthent/OASysterm/raw/master/imgs/detail-of-myprocess.jpg) 
+
 <br />
 <br />
 
