@@ -39,7 +39,7 @@
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/start-process.jpg)  
 
 
-4、查看自己已经发起的流程情况，有三种状态：已通过（Passed）、未通过（Din't Pass）和正在审批中（Inspecting）  
+4、查看自己已经发起的流程情况，有三种状态：已通过（Passed）、未通过（Din't Pass）和正在审批中（Inspecting）:  
 
 ![image](https://github.com/venthent/OASysterm/raw/master/imgs/process-list.jpg)  
 <br />
