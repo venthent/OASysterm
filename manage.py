@@ -1,3 +1,4 @@
+import random
 import os
 from datetime import timedelta
 from flask_script import Manager, Shell
@@ -7,6 +8,8 @@ from mysite.app.models import User, Role, Process, Position
 
 app = creat_app(config_name='default')
 app.permanent_session_lifetime = timedelta(minutes=10)
+#this is a test from wangjie
+#hello
 manager = Manager(app)
 migrate = Migrate(app, db)
 cwd = os.getcwd()
@@ -33,6 +36,8 @@ def deploy():
     from mysite.app.models import User,Role, Position
 
     upgrade()
+    #this is a upgrade
+    #deploy
     Role.insert_roles()
     Position.insert_positions()
     User.insert_administrator()
